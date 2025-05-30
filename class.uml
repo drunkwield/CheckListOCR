@@ -1,0 +1,50 @@
+@startuml 001
+
+Reconginser ^-- Table
+Table ^-- question
+Reconginser ^-- mesh
+class question {
+  question : string
+  answer : string
+  RightAnswer: string
+  isRight : Bool
+  show(void) : void
+}
+
+class mesh {
+  cells: list[list[int,int]]
+  mat: list[list[list[int,int]]]
+}
+class Reconginser {
+  filepath : string
+  read(path : string) : Table
+}
+
+class Table {
+    mat : list
+    RowNumber : Integer
+    ColumnNumber : Integer
+    answer : Dict List
+    RowTitle : list
+    ColumnTitle : list
+    score : Integer
+    mark : list
+    setRowTitle(int row, String title) : void
+    setColTitle(int row, String title) : void
+    getCell(int row, int column) : String
+    setCell(int row, int column, String value) : void
+    
+    getAnswer(void) : String
+    getAnswerRow(int row) : String
+    setAnswer(int row, String value) : void
+    setAnswerRow(int row, String value) : void
+    checkScore(void) : Integer
+    checkScoreRow(int row) : Bool
+    getScore(void) : Integer
+    update(void) : void
+    showMark(void) : void
+}
+
+
+
+@enduml
