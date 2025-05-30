@@ -1,0 +1,40 @@
+Software Requirements Specification (SRS)
+Project: Answer Sheet Recognition System
+
+1. Introduction
+This system enables users to upload answer sheet images, recognize the selected answers, compare them with a given correct answer string, and return the score and per-question result. It's built using Flask, OpenCV, and Tesseract OCR.
+
+2. Functional Requirements
+- Users upload an answer sheet image and provide 24 correct answers (A-E).
+- System uses OpenCV to detect the answer grid.
+- Tesseract OCR reads content in each cell.
+- Answers are parsed and matched against correct ones.
+- The system calculates total score and per-question correctness.
+- Result is rendered on the upload page in table format.
+
+3. Non-functional Requirements
+- Max file size: 10MB, format: JPG/PNG
+- Answer sheet layout: 25 rows × 6 columns
+- Average response time < 5 seconds
+- Interface must be usable via modern web browsers
+
+4. System Components
+- Frontend: HTML form (upload image + answers)
+- Backend: Flask server
+  - Routes: GET '/' and POST '/upload'
+  - Classes:
+    - reconginser: Handles image reading and recognition
+    - mesh: Detects and stores cell coordinates
+    - table: Manages answer matrix and scoring
+    - question: Stores single question result
+- Upload folder: /uploads
+
+5. Input Format
+- Image of scanned answer sheet (25×6 grid)
+- Correct answer string: 24 characters from A to E
+
+6. Output Format
+- A table with question number, selected answer, correct answer, and result (✔ or ✘)
+- A total score
+
+End of SRS
